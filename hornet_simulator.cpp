@@ -28,30 +28,30 @@ typedef struct access_t {
 	int wavefront;
 	int phase;
 	int line;
-}access_t;//PE‚©‚ç”­s‚³‚ê‚½ƒAƒNƒZƒX‚ÌÚ×î•ñ
+}access_t;//PEã‹ã‚‰ç™ºè¡Œã•ã‚ŒãŸã‚¢ã‚¯ã‚»ã‚¹ã®è©³ç´°æƒ…å ±
 
 class event {
 public:
 	function<void(access_t)> callback;
 	access_t access;
-	int event_priority;//ƒLƒƒƒbƒVƒ…‚Ö‚ÌƒŠƒNƒGƒXƒg“’…ƒCƒxƒ“ƒgAƒLƒƒƒbƒVƒ…“à‚Ì’TõƒCƒxƒ“ƒgAƒLƒƒƒbƒVƒ…‚Ö‚ÌDRAM‚©‚ç‚Ì‘‚«‚İƒCƒxƒ“ƒgAPE‚Ö‚Ìƒ‰ƒCƒgƒoƒbƒNƒCƒxƒ“ƒg‚Ì‡‚Åˆ—,‚»‚ê‚¼‚ê—Dæ“x‚ğ20,15,5,0‚Æİ’è‚·‚é
+	int event_priority;//ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã¸ã®ãƒªã‚¯ã‚¨ã‚¹ãƒˆåˆ°ç€ã‚¤ãƒ™ãƒ³ãƒˆã€ã‚­ãƒ£ãƒƒã‚·ãƒ¥å†…ã®æ¢ç´¢ã‚¤ãƒ™ãƒ³ãƒˆã€ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã¸ã®DRAMã‹ã‚‰ã®æ›¸ãè¾¼ã¿ã‚¤ãƒ™ãƒ³ãƒˆã€PEã¸ã®ãƒ©ã‚¤ãƒˆãƒãƒƒã‚¯ã‚¤ãƒ™ãƒ³ãƒˆã®é †ã§å‡¦ç†,ãã‚Œãã‚Œå„ªå…ˆåº¦ã‚’20,15,5,0ã¨è¨­å®šã™ã‚‹
 	bool operator< (const event& second)const {
 		return event_priority < second.event_priority;
 	};
-};//ƒAƒNƒZƒX‚É‚æ‚Á‚Ä”­¶‚µ‚Ä‚¢‚­ƒCƒxƒ“ƒg
-const int wheelsize = 700000;//timewheel‚Ì”z—ñƒTƒCƒY
-int hitcount = 0;//ƒLƒƒƒbƒVƒ…‚Éhit‚µ‚½,‚à‚µ‚­‚Í“¯ˆêphase“à‚Å‚©‚Ô‚Á‚Ä‚¢‚½ƒAƒNƒZƒX‚Ì”
-int misscount = 0;//ƒLƒƒƒbƒVƒ…‚Åmiss‚µ‚½ƒAƒNƒZƒX‚Ì”
-const int datasize = 4;//ƒLƒƒƒbƒVƒ…“à‚Ìƒf[ƒ^‚Í2^4 word‚ ‚é
-const int associativity = 2;//ƒLƒƒƒbƒVƒ…‚Ì˜A‘z“x=2^2
-const int indexsize = 1;//ƒLƒƒƒbƒVƒ…‚ÌƒCƒ“ƒfƒbƒNƒX‚Ì”=2^9
-const int cunum = 1;//ƒLƒƒƒbƒVƒ…‚ª‰½ŒÂ‚ ‚é‚©
+};//ã‚¢ã‚¯ã‚»ã‚¹ã«ã‚ˆã£ã¦ç™ºç”Ÿã—ã¦ã„ãã‚¤ãƒ™ãƒ³ãƒˆ
+const int wheelsize = 700000;//timewheelã®é…åˆ—ã‚µã‚¤ã‚º
+int hitcount = 0;//ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã«hitã—ãŸ,ã‚‚ã—ãã¯åŒä¸€phaseå†…ã§ã‹ã¶ã£ã¦ã„ãŸã‚¢ã‚¯ã‚»ã‚¹ã®æ•°
+int misscount = 0;//ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã§missã—ãŸã‚¢ã‚¯ã‚»ã‚¹ã®æ•°
+const int datasize = 4;//ã‚­ãƒ£ãƒƒã‚·ãƒ¥å†…ã®ãƒ‡ãƒ¼ã‚¿ã¯2^4 wordã‚ã‚‹
+const int associativity = 2;//ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã®é€£æƒ³åº¦=2^2
+const int indexsize = 1;//ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®æ•°=2^9
+const int cunum = 1;//ã‚­ãƒ£ãƒƒã‚·ãƒ¥ãŒä½•å€‹ã‚ã‚‹ã‹
 const int wavefrontnum = 8;
 const int phasenum = 8;
 const int penum = 8;
 const int max_tree_depth = 384;
 const int wavefrontsize = phasenum * penum;
-long long now = 0;//Œ»İ‚ÌƒTƒCƒNƒ‹
+long long now = 0;//ç¾åœ¨ã®ã‚µã‚¤ã‚¯ãƒ«
 uint32_t pattern[wavefrontnum][max_tree_depth][phasenum][penum];
 int treedepth[wavefrontnum] = { 0 };
 int processingdepth[wavefrontnum] = { 0 };
@@ -70,14 +70,14 @@ queue<access_t>registerlist;
 set<uint32_t>dramlist;
 bool accessed[wavefrontnum][phasenum][penum];
 typedef struct cacheline {
-	bool valid;//ƒLƒƒƒbƒVƒ…‚Ì—LŒøbit
-	int tag;//ƒ^ƒO
-	int last_access;//ÅIƒAƒNƒZƒXƒTƒCƒNƒ‹@LRU—p
+	bool valid;//ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã®æœ‰åŠ¹bit
+	int tag;//ã‚¿ã‚°
+	int last_access;//æœ€çµ‚ã‚¢ã‚¯ã‚»ã‚¹ã‚µã‚¤ã‚¯ãƒ«ã€€LRUç”¨
 }cacheline;
-cacheline cache[cunum][1 << indexsize][1 << associativity];//ƒLƒƒƒbƒVƒ…
+cacheline cache[cunum][1 << indexsize][1 << associativity];//ã‚­ãƒ£ãƒƒã‚·ãƒ¥
 int calculation_time[wavefrontnum] = { 0 };
-priority_queue<event> timewheel[wheelsize]; // 2‚ÂˆÈã‚Ìevent‚à“o˜^‰Â”\
-											// ‚­‚é‚Á‚Æ‚È‚Á‚Ä‚é(–³ŒÀ‚ÌÀ‘•)
+priority_queue<event> timewheel[wheelsize]; // 2ã¤ä»¥ä¸Šã®eventã‚‚ç™»éŒ²å¯èƒ½
+											// ãã‚‹ã£ã¨ãªã£ã¦ã‚‹(ç„¡é™ã®å®Ÿè£…)
 int time_cal(int time);
 void request_cache(access_t access);
 void cache_search(access_t access);
@@ -87,7 +87,7 @@ int read_input();
 void memory_read();
 void arithmetic_start();
 void dram_return(access_t access);
-int time_cal(int time) {//timewheel‚Ì‚Ç‚±‚ÉƒCƒxƒ“ƒg‚ğ“o˜^‚·‚é‚©ŒvZ
+int time_cal(int time) {//timewheelã®ã©ã“ã«ã‚¤ãƒ™ãƒ³ãƒˆã‚’ç™»éŒ²ã™ã‚‹ã‹è¨ˆç®—
 	return (time) % wheelsize;
 }
 void request_cache(access_t access) {
@@ -96,32 +96,32 @@ void request_cache(access_t access) {
 		timewheel[now].push(event{ cache_search, access, 15});
 	}
 }
-void cache_search(access_t access) {//ƒLƒƒƒbƒVƒ…‚Ìhit”»’è
+void cache_search(access_t access) {//ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã®hitåˆ¤å®š
 	cache_work_time += 1;
 	access = registerlist.front();
 	registerlist.pop();
 	bool hit = false;
-	int cu = 0;//cu”Ô†
-	uint32_t address = access.address;//ƒAƒNƒZƒX‚µ‚½‚¢ƒAƒhƒŒƒX
-	uint32_t tag = address >> (indexsize + datasize + 2);//ƒAƒhƒŒƒX‚É‘Î‰‚·‚éƒ^ƒO
-	uint32_t index = (address % (1 << (indexsize + datasize + 2 ))) >> (datasize + 2);//ƒAƒhƒŒƒX‚É‘Î‰‚µ‚½‚¢ƒCƒ“ƒfƒbƒNƒX
+	int cu = 0;//cuç•ªå·
+	uint32_t address = access.address;//ã‚¢ã‚¯ã‚»ã‚¹ã—ãŸã„ã‚¢ãƒ‰ãƒ¬ã‚¹
+	uint32_t tag = address >> (indexsize + datasize + 2);//ã‚¢ãƒ‰ãƒ¬ã‚¹ã«å¯¾å¿œã™ã‚‹ã‚¿ã‚°
+	uint32_t index = (address % (1 << (indexsize + datasize + 2 ))) >> (datasize + 2);//ã‚¢ãƒ‰ãƒ¬ã‚¹ã«å¯¾å¿œã—ãŸã„ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
 	for (int i = 0; i < 1 << associativity; i++) {
-		if (cache[cu][index][i].valid && cache[cu][index][i].tag == tag) {//valid‚Åƒ^ƒO‚Ìˆê’v‚·‚éƒLƒƒƒbƒVƒ…ƒ‰ƒCƒ“‚ª‚ ‚Á‚½ê‡hitBÅVƒAƒNƒZƒXŠÔ‚ğXV
+		if (cache[cu][index][i].valid && cache[cu][index][i].tag == tag) {//validã§ã‚¿ã‚°ã®ä¸€è‡´ã™ã‚‹ã‚­ãƒ£ãƒƒã‚·ãƒ¥ãƒ©ã‚¤ãƒ³ãŒã‚ã£ãŸå ´åˆhitã€‚æœ€æ–°ã‚¢ã‚¯ã‚»ã‚¹æ™‚é–“ã‚’æ›´æ–°
 			hit = true;
 			cache[cu][index][i].last_access = now;
 			break;
 		}
 	}
 	if (hit) {
-		timewheel[time_cal(now + 3)].push(event{ pe_writeback, access, 0 });//3ƒNƒƒbƒNŒã‚É‘Î‰‚·‚éwavefront,phase‚ÌƒXƒg[ƒ‹‚ğ‰ğœ
+		timewheel[time_cal(now + 3)].push(event{ pe_writeback, access, 0 });//3ã‚¯ãƒ­ãƒƒã‚¯å¾Œã«å¯¾å¿œã™ã‚‹wavefront,phaseã®ã‚¹ãƒˆãƒ¼ãƒ«ã‚’è§£é™¤
 	}
 	else {
 		if (dramlist.count(address) == 0) {
 			dramlist.insert(address);
 			max_dram_wait = max(max_dram_wait, (int)dramlist.size());
-			int oldest = -1;//XV‚·‚éƒLƒƒƒbƒVƒ…ƒ‰ƒCƒ“‚Ì”Ô†BˆÈ‰º‚Ìƒ‹[ƒv‚Å‘S‚Ä‚Ìƒ‰ƒCƒ“‚ğƒCƒeƒŒ[ƒVƒ‡ƒ“‚µ‚ÄXV
-			int latest_access = INT_MAX;//XV‚·‚éƒLƒƒƒbƒVƒ…ƒ‰ƒCƒ“‚ÌÅIƒAƒNƒZƒXŠÔ
-										//XV‚·‚éƒLƒƒƒbƒVƒ…ƒ‰ƒCƒ“‚ÌŒˆ’èBLRU‚Ås‚¤B
+			int oldest = -1;//æ›´æ–°ã™ã‚‹ã‚­ãƒ£ãƒƒã‚·ãƒ¥ãƒ©ã‚¤ãƒ³ã®ç•ªå·ã€‚ä»¥ä¸‹ã®ãƒ«ãƒ¼ãƒ—ã§å…¨ã¦ã®ãƒ©ã‚¤ãƒ³ã‚’ã‚¤ãƒ†ãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³ã—ã¦æ›´æ–°
+			int latest_access = INT_MAX;//æ›´æ–°ã™ã‚‹ã‚­ãƒ£ãƒƒã‚·ãƒ¥ãƒ©ã‚¤ãƒ³ã®æœ€çµ‚ã‚¢ã‚¯ã‚»ã‚¹æ™‚é–“
+										//æ›´æ–°ã™ã‚‹ã‚­ãƒ£ãƒƒã‚·ãƒ¥ãƒ©ã‚¤ãƒ³ã®æ±ºå®šã€‚LRUã§è¡Œã†ã€‚
 			for (int i = 0; i < 1 << associativity; i++) {
 				if (!cache[cu][index][i].valid) {
 					oldest = i;
@@ -142,10 +142,10 @@ void cache_search(access_t access) {//ƒLƒƒƒbƒVƒ…‚Ìhit”»’è
 	}
 }
 void cache_writeback(access_t access) {
-	int cu = 0;//cu”Ô†
-	uint32_t address = access.address;//ƒAƒNƒZƒX‚µ‚½‚¢ƒAƒhƒŒƒX
-	uint32_t tag = address >> (indexsize + datasize + 2);//ƒAƒhƒŒƒX‚É‘Î‰‚·‚éƒ^ƒO
-	uint32_t index = (address % (1 << (indexsize + datasize + 2))) >> (datasize + 2);//ƒAƒhƒŒƒX‚É‘Î‰‚µ‚½‚¢ƒCƒ“ƒfƒbƒNƒX
+	int cu = 0;//cuç•ªå·
+	uint32_t address = access.address;//ã‚¢ã‚¯ã‚»ã‚¹ã—ãŸã„ã‚¢ãƒ‰ãƒ¬ã‚¹
+	uint32_t tag = address >> (indexsize + datasize + 2);//ã‚¢ãƒ‰ãƒ¬ã‚¹ã«å¯¾å¿œã™ã‚‹ã‚¿ã‚°
+	uint32_t index = (address % (1 << (indexsize + datasize + 2))) >> (datasize + 2);//ã‚¢ãƒ‰ãƒ¬ã‚¹ã«å¯¾å¿œã—ãŸã„ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
 	int rewriteline = access.line;
 	cache[cu][index][rewriteline].valid = true;
 	cache[cu][index][rewriteline].tag = tag;
@@ -209,10 +209,10 @@ int read_input() {
 	}
 	return 1;
 }
-//ƒAƒNƒZƒXƒŠƒNƒGƒXƒg@ƒAƒNƒZƒXI—¹@Zp‰‰Z@ƒAƒNƒZƒXƒŠƒNƒGƒXƒg
-//•K—v‚ÈƒCƒxƒ“ƒg
-// ƒLƒƒƒbƒVƒ…‚Ö‚ÌPE‚©‚ç‚ÌƒŠƒNƒGƒXƒg‚Ì”­s
-// ƒLƒƒƒbƒVƒ…‚ğ‚µ‚Î‚ç‚­ƒrƒW[‚É‚·‚é
+//ã‚¢ã‚¯ã‚»ã‚¹ãƒªã‚¯ã‚¨ã‚¹ãƒˆã€€ã‚¢ã‚¯ã‚»ã‚¹çµ‚äº†ã€€ç®—è¡“æ¼”ç®—ã€€ã‚¢ã‚¯ã‚»ã‚¹ãƒªã‚¯ã‚¨ã‚¹ãƒˆ
+//å¿…è¦ãªã‚¤ãƒ™ãƒ³ãƒˆ
+// ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã¸ã®PEã‹ã‚‰ã®ãƒªã‚¯ã‚¨ã‚¹ãƒˆã®ç™ºè¡Œ
+// ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚’ã—ã°ã‚‰ããƒ“ã‚¸ãƒ¼ã«ã™ã‚‹
 //
 void memory_read() {
 	addresslist.clear();
@@ -242,17 +242,17 @@ void arithmetic_start() {
 	arithmetic_count = 56;
 }
 void output_result() {
-	cout << "Œ»İ‚ÌƒtƒŒ[ƒ€: " << frame_count+1<<"\n";
-	cout << "ˆ—ŠÔ: " << now << "\n";
-	cout << "PE‰Ò“®—¦: " << (double)(now-pe_idle_time) / now << "\n";
-	cout << "ƒLƒƒƒbƒVƒ…‰Ò“®—¦: " << (double)cache_work_time / now << "\n";
-	cout << "Wavefront‚²‚Æ‚Ìˆ—ŠÔ\n";
+	cout << "ç¾åœ¨ã®ãƒ•ãƒ¬ãƒ¼ãƒ : " << frame_count+1<<"\n";
+	cout << "å‡¦ç†æ™‚é–“: " << now << "\n";
+	cout << "PEç¨¼å‹•ç‡: " << (double)(now-pe_idle_time) / now << "\n";
+	cout << "ã‚­ãƒ£ãƒƒã‚·ãƒ¥ç¨¼å‹•ç‡: " << (double)cache_work_time / now << "\n";
+	cout << "Wavefrontã”ã¨ã®å‡¦ç†æ™‚é–“\n";
 	for (int wa = 0; wa < wavefrontnum; wa++) {
 		cout << calculation_time[wa] << " ";
 	}
 	cout << "\n";
-	cout << "Å‘å‚ÌDRAM‘Ò‚¿”: " << max_dram_wait << "\n";
-	cout << "ƒLƒƒƒbƒVƒ…‚Ì’Ç‚¢o‚µ”: " << num_cache_out << "\n";
+	cout << "æœ€å¤§ã®DRAMå¾…ã¡æ•°: " << max_dram_wait << "\n";
+	cout << "ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã®è¿½ã„å‡ºã—æ•°: " << num_cache_out << "\n";
 	cout << "\n";
 }
 int main(int argc, char* argv[]) {
@@ -261,7 +261,7 @@ int main(int argc, char* argv[]) {
 	ofstream ofs("simulation_result.txt");
 	cout.rdbuf(ofs.rdbuf());
 	clear_values();
-	while (read_input() == 0) {//1ƒtƒŒ[ƒ€•ª‚Ì“ü—Í‚ğ“Ç‚İ‚ñ‚ÅAwhileƒ‹[ƒv‚Ì’†‚Ìˆ—‚É“ü‚é
+	while (read_input() == 0) {//1ãƒ•ãƒ¬ãƒ¼ãƒ åˆ†ã®å…¥åŠ›ã‚’èª­ã¿è¾¼ã‚“ã§ã€whileãƒ«ãƒ¼ãƒ—ã®ä¸­ã®å‡¦ç†ã«å…¥ã‚‹
 		while (1) {
 			if (now==991) {
 				int x;
@@ -271,63 +271,63 @@ int main(int argc, char* argv[]) {
 				timewheel[now].push(event{ cache_search, NULL, 15 });
 			}
 			while (!timewheel[time_cal(now)].empty()) {
-				//ƒLƒƒƒbƒVƒ…‚ÌƒCƒxƒ“ƒg‚ğˆ—
+				//ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã®ã‚¤ãƒ™ãƒ³ãƒˆã‚’å‡¦ç†
 				event currentevent = timewheel[now].top();
 				timewheel[now].pop();
 				access_t access = currentevent.access;
 				auto func = currentevent.callback;
 				func(access);
 			}
-			if (arithmetic_count > 0) {//Zp‰‰Z’†‚Ìê‡
-				arithmetic_count--;//Zp‰‰Z‚Ìc‚èŠÔ‚ğƒfƒNƒŠƒƒ“ƒg
-				if (arithmetic_count == 0) {//Zp‰‰Z‚ªI—¹‚µ‚½‚ç
-					if (processingdepth[wavefront] == treedepth[wavefront]) {//‚à‚µŒ»İ‚Ìwavefront‚É‚Â‚¢‚Ä‚·‚×‚Ä‚Ì’Tõ‚ªI—¹‚µ‚Ä‚¢‚ê‚Î
-						is_stall[wavefront] = true;//‚»‚Ìwavefront‚ğƒXƒg[ƒ‹‚³‚¹‚é
+			if (arithmetic_count > 0) {//ç®—è¡“æ¼”ç®—ä¸­ã®å ´åˆ
+				arithmetic_count--;//ç®—è¡“æ¼”ç®—ã®æ®‹ã‚Šæ™‚é–“ã‚’ãƒ‡ã‚¯ãƒªãƒ¡ãƒ³ãƒˆ
+				if (arithmetic_count == 0) {//ç®—è¡“æ¼”ç®—ãŒçµ‚äº†ã—ãŸã‚‰
+					if (processingdepth[wavefront] == treedepth[wavefront]) {//ã‚‚ã—ç¾åœ¨ã®wavefrontã«ã¤ã„ã¦ã™ã¹ã¦ã®æ¢ç´¢ãŒçµ‚äº†ã—ã¦ã„ã‚Œã°
+						is_stall[wavefront] = true;//ãã®wavefrontã‚’ã‚¹ãƒˆãƒ¼ãƒ«ã•ã›ã‚‹
 						accessedaddress[wavefront] = 0;
 						for (int ph = 0; ph < phasenum; ph++) {
 							for (int pe = 0; pe < penum; pe++) {
 								accessed[wavefront][ph][pe] = false;
 							}
 						}
-						calculation_time[wavefront] = now;//‚»‚Ìwavefront‚É‚Â‚¢‚ÄŒvZŠÔ‚ğƒƒ‚‚·‚é
+						calculation_time[wavefront] = now;//ãã®wavefrontã«ã¤ã„ã¦è¨ˆç®—æ™‚é–“ã‚’ãƒ¡ãƒ¢ã™ã‚‹
 						wavefront += 1;
 						bool finished = true;
-						for (int wa = 0; wa < wavefrontnum; wa++) {//‚Ù‚©‚Ìwavefront‚àŠÜ‚ßŒ»İ‚ÌƒtƒŒ[ƒ€‚ÌŒvZ‚ª‚·‚×‚ÄI—¹‚µ‚Ä‚¢‚È‚¢‚©Šm”F‚·‚é
+						for (int wa = 0; wa < wavefrontnum; wa++) {//ã»ã‹ã®wavefrontã‚‚å«ã‚ç¾åœ¨ã®ãƒ•ãƒ¬ãƒ¼ãƒ ã®è¨ˆç®—ãŒã™ã¹ã¦çµ‚äº†ã—ã¦ã„ãªã„ã‹ç¢ºèªã™ã‚‹
 							if (calculation_time[wa] == 0) {
 								finished = false;
 							}
 						}
-						if (finished) {//‚à‚µŒ»İ‚ÌƒtƒŒ[ƒ€‚Ì‚·‚×‚Ä‚ÌŒvZ‚ªI—¹‚µ‚Ä‚¢‚½‚çAŸ‚ÌƒtƒŒ[ƒ€‚Ös‚­
+						if (finished) {//ã‚‚ã—ç¾åœ¨ã®ãƒ•ãƒ¬ãƒ¼ãƒ ã®ã™ã¹ã¦ã®è¨ˆç®—ãŒçµ‚äº†ã—ã¦ã„ãŸã‚‰ã€æ¬¡ã®ãƒ•ãƒ¬ãƒ¼ãƒ ã¸è¡Œã
 							output_result();
 							frame_count += 1;
 							break;
 						}
 					}
-					else {//Œ»İ‚Ìwavefront‚Ìˆ—‚ª‚Ü‚¾c‚Á‚Ä‚¢‚½‚ç
-						processingdepth[wavefront] += 1;//Ÿ‚Ì[‚³‚ÉˆÚ‚é
-						accessedaddress[wavefront] = 0;//ƒƒ‚ƒŠƒAƒNƒZƒX‚ªI—¹‚µ‚½PE‚Ì”‚ğ0‚É‚·‚é
+					else {//ç¾åœ¨ã®wavefrontã®å‡¦ç†ãŒã¾ã æ®‹ã£ã¦ã„ãŸã‚‰
+						processingdepth[wavefront] += 1;//æ¬¡ã®æ·±ã•ã«ç§»ã‚‹
+						accessedaddress[wavefront] = 0;//ãƒ¡ãƒ¢ãƒªã‚¢ã‚¯ã‚»ã‚¹ãŒçµ‚äº†ã—ãŸPEã®æ•°ã‚’0ã«ã™ã‚‹
 						for (int ph = 0; ph < phasenum; ph++) {
 							for (int pe = 0; pe < penum; pe++) {
 								accessed[wavefront][ph][pe] = false;
 							}
 						}
-						is_stall[wavefront] = false;//ƒXƒg[ƒ‹‚Í‚µ‚Ä‚¢‚È‚¢ó‘Ô‚É‚·‚é
+						is_stall[wavefront] = false;//ã‚¹ãƒˆãƒ¼ãƒ«ã¯ã—ã¦ã„ãªã„çŠ¶æ…‹ã«ã™ã‚‹
 					}
 				}
 			}
 			else {
-				bool memoryread_flag = false;//Load‰‰Z‚ğs‚¤ƒtƒ‰ƒO
-				bool arithmetic_flag = false;//Zp‰‰Z‚ğs‚¤ƒtƒ‰ƒO
+				bool memoryread_flag = false;//Loadæ¼”ç®—ã‚’è¡Œã†ãƒ•ãƒ©ã‚°
+				bool arithmetic_flag = false;//ç®—è¡“æ¼”ç®—ã‚’è¡Œã†ãƒ•ãƒ©ã‚°
 				if (phase == 0) {
-					for (int add = 0; add < wavefrontnum; add++) {//Œ»İ‚Ìwavefront‚©‚ç‡‚ÉA‰‰Z‚ğÀs‰Â”\‚©Šm”F
+					for (int add = 0; add < wavefrontnum; add++) {//ç¾åœ¨ã®wavefrontã‹ã‚‰é †ã«ã€æ¼”ç®—ã‚’å®Ÿè¡Œå¯èƒ½ã‹ç¢ºèª
 						int currentwavefront = (wavefront + add) % wavefrontnum;
-						if (is_stall[currentwavefront] == false) {//‚à‚µƒXƒg[ƒ‹ó‘Ô‚Å‚È‚¯‚ê‚ÎALoad‰‰Z‚ğs‚¤
+						if (is_stall[currentwavefront] == false) {//ã‚‚ã—ã‚¹ãƒˆãƒ¼ãƒ«çŠ¶æ…‹ã§ãªã‘ã‚Œã°ã€Loadæ¼”ç®—ã‚’è¡Œã†
 							wavefront = currentwavefront;
 							memoryread_flag = true;
 							break;
 						}
 						else {
-							if (accessedaddress[currentwavefront] == wavefrontsize) {//ƒXƒg[ƒ‹‚µ‚Ä‚¨‚èA‚©‚Â‚·‚×‚Ä‚Ìƒƒ‚ƒŠ“Ç‚İ‚İ‚ªI—¹‚µ‚Ä‚¢‚ê‚ÎZp‰‰Z‚ğs‚¤
+							if (accessedaddress[currentwavefront] == wavefrontsize) {//ã‚¹ãƒˆãƒ¼ãƒ«ã—ã¦ãŠã‚Šã€ã‹ã¤ã™ã¹ã¦ã®ãƒ¡ãƒ¢ãƒªèª­ã¿è¾¼ã¿ãŒçµ‚äº†ã—ã¦ã„ã‚Œã°ç®—è¡“æ¼”ç®—ã‚’è¡Œã†
 								wavefront = currentwavefront;
 								arithmetic_flag = true;
 								break;
@@ -336,7 +336,7 @@ int main(int argc, char* argv[]) {
 					}
 				}
 				else {
-					memoryread_flag = true;//phase 0‚Å‚È‚¯‚ê‚Î•K‚¸Load‰‰Z‚Ì“r’†
+					memoryread_flag = true;//phase 0ã§ãªã‘ã‚Œã°å¿…ãšLoadæ¼”ç®—ã®é€”ä¸­
 				}
 				if (memoryread_flag) {
 					memory_read();
